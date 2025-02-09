@@ -26,5 +26,20 @@ polls_df = pd.read_csv("polls.csv").set_index("id")
 def index():
     return "Test"
 
+@app.route('polls/<id>/')
+def polls(id):
+     poll = polls_df.loc[int(id)]
+     return poll
+
+@app.route('polls/', methods =['GET', 'POST'])
+def create_poll():
+
+    if request.method == 'GET':
+        pass
+    elif request.method == 'POST':
+        pass
+    
+
+
 if  __name__ =="__main__":
     app.run(host='0.0.0.0', port='5010', debug=True)
