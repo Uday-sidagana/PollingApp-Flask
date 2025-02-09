@@ -18,6 +18,10 @@ if not os.path.exists('polls.csv'):
 
     }
 
+    pd.DataFrame(structure).set_index("id").to_csv("polls.csv")
+
+polls_df = pd.read_csv("polls.csv").set_index("id")
+
 @app.route('/')
 def index():
     return "Test"
