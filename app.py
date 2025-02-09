@@ -5,6 +5,19 @@ import os.path
 
 app = Flask(__name__, template_folder="templates")
 
+if not os.path.exists('polls.csv'):
+    structure={
+        'id': [],
+        'poll': [],
+        'option1': [],
+        'option2': [],
+        'option3': [],
+        'votes1': [],
+        'votes2': [],
+        'votes3': [],
+
+    }
+
 @app.route('/')
 def index():
     return "Test"
