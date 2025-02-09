@@ -38,6 +38,10 @@ def create_poll():
         pass
     elif request.method == 'POST':
         pass
+
+@app.route('/vote/<id>/<option>')
+def vote(id, option):
+    pass
     
 
 
