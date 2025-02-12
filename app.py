@@ -35,9 +35,20 @@ def polls(id):
 def create_poll():
 
     if request.method == 'GET':
-        pass
+        return render_template('new_poll.html')
+    
     elif request.method == 'POST':
-        pass
+        
+        poll = request.form.get('poll')
+        option1 = request.form.get('option1')
+        option2 = request.form.get('option2')
+        option3 = request.form.get('option3')
+
+        polls_df.loc[max(polls_df.index.values) + 1] = [poll, option1, option2, option3, 0, 0, 0]
+
+        polls_df.to_csv('polls.csv')
+
+        return redirect(url_for('index'))
 
 @app.route('/vote/<id>/<option>')
 def vote(id, option):
