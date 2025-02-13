@@ -29,7 +29,7 @@ def index():
 @app.route('/polls/<id>')
 def polls(id):
      poll = polls_df.loc[int(id)]
-     return render_template('show_poll.html', poll = poll)
+     return render_template('show_poll.html', poll = poll, id=id)
 
 @app.route('/polls', methods =['GET', 'POST'])
 def create_poll():
@@ -63,6 +63,13 @@ def vote(id, option):
     
     else:
         return 'Cannot vote more than once'
+    
+
+@app.route('/cookie_remove/<id>')
+def cookie_remove(id):
+    response = make_response(redirect(url_for('polls', id=id)))
+    response.delete_cookie(f'vote_{id}_cookie')
+    return response
 
 
 if  __name__ =="__main__":

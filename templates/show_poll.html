@@ -13,8 +13,15 @@
     <p><b> {{ poll['option2'] }} </b>  {{ poll['votes2'] }}<a href="{{ url_for('vote', id=poll.name, option= 2) }}">Vote</a></p> 
     <p><b> {{ poll['option3'] }} </b>  {{ poll['votes3'] }}<a href="{{ url_for('vote', id=poll.name, option= 3) }}">Vote</a></p>
 
+
     <form action=" {{ url_for('index') }} " method="GET">
         <input type="submit" value="Back(Index)">
     </form>
+
+    <form action="{{ url_for('cookie_remove', id=id) }}" method="get">
+        <input type="submit" value="Clear Cookies">
+    </form>
+
+    
 </body>
 </html>
